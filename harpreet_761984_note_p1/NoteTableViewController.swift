@@ -90,10 +90,25 @@ class NoteTableViewController: UITableViewController {
     
 
   
-//     //Override to support rearranging the table view.
-//    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-//
-//    }
+     //Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+
+        if tableView.isEditing{
+            return .none
+        }
+        else{
+            return .delete
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        
+        return false
+    }
     
   }
     /*
