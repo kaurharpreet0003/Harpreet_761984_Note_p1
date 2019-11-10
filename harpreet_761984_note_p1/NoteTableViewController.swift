@@ -19,6 +19,8 @@ class NoteTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+        
     }
 
     // MARK: - Table view data source
@@ -36,6 +38,7 @@ class NoteTableViewController: UITableViewController {
     @IBAction func NewFolder(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "New Folder", message: "Enter a name for this folder", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancel.setValue(UIColor.brown, forKey: "titleTextColor")
         alert.addTextField { (UITextField) in
             UITextField.placeholder = "Name"
         }
@@ -45,6 +48,7 @@ class NoteTableViewController: UITableViewController {
             self.table_view.reloadData()
             
         }
+        addItem.setValue(UIColor.black, forKey: "titleTextColor")
         alert.addAction(cancel)
         alert.addAction(addItem)
         self.present(alert, animated: true, completion: nil)
