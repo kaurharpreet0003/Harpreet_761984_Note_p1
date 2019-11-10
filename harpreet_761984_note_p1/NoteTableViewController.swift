@@ -10,6 +10,7 @@ import UIKit
 
 class NoteTableViewController: UITableViewController {
     var array1 : [String]?
+    @IBOutlet var table_view: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,8 +42,12 @@ class NoteTableViewController: UITableViewController {
         let addItem = UIAlertAction(title: "Add Item", style: .default) { (UIAlertAction) in
             let textItem = alert.textFields![0]
             self.array1?.append(textItem.text!)
+            self.table_view.reloadData()
             
         }
+        alert.addAction(cancel)
+        alert.addAction(addItem)
+        self.present(alert, animated: true, completion: nil)
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
