@@ -13,7 +13,7 @@ class NoteTableViewController: UITableViewController {
     @IBOutlet var table_view: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        array1 = [String]()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -25,12 +25,12 @@ class NoteTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return array1?.count ?? 0
     }
 
     @IBAction func NewFolder(_ sender: UIBarButtonItem) {
@@ -41,7 +41,7 @@ class NoteTableViewController: UITableViewController {
         }
         let addItem = UIAlertAction(title: "Add Item", style: .default) { (UIAlertAction) in
             let textItem = alert.textFields![0]
-            self.array1?.append(textItem.text!)
+            self.array1!.append(textItem.text!)
             self.table_view.reloadData()
             
         }
@@ -49,15 +49,22 @@ class NoteTableViewController: UITableViewController {
         alert.addAction(addItem)
         self.present(alert, animated: true, completion: nil)
     }
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "reuse"){
+            let cell1 = array1![indexPath.row]
+            cell.imageView?.image = UIImage(named: "folder-icon")
+            cell.textLabel!.text = cell1
+            return cell
+        }
+        
 
         // Configure the cell...
 
-        return cell
+        return UITableViewCell()
     }
-    */
+   
 
     /*
     // Override to support conditional editing of the table view.
