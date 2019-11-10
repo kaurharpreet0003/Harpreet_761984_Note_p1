@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Note Table View Controller-->
         <scene sceneID="s6P-3t-lnU">
             <objects>
-                <tableViewController id="0OT-cr-wbv" sceneMemberID="viewController">
+                <tableViewController id="0OT-cr-wbv" customClass="NoteTableViewController" customModule="harpreet_761984_note_p1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GAz-ao-c7A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,6 +46,9 @@
                         <barButtonItem width="352" style="plain" systemItem="fixedSpace" id="oA3-1N-RJ7"/>
                         <barButtonItem title="New Folder" width="433" id="kKU-fS-pdT">
                             <color key="tintColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="NewFolder:" destination="0OT-cr-wbv" id="2V8-Cf-SMv"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="2Ex-VM-Lbr">
