@@ -36,15 +36,45 @@ class NoteTableViewController: UITableViewController {
     }
 
     @IBAction func NewFolder(_ sender: UIBarButtonItem) {
+        
         let alert = UIAlertController(title: "New Folder", message: "Enter a name for this folder", preferredStyle: .alert)
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         cancel.setValue(UIColor.brown, forKey: "titleTextColor")
+        
         alert.addTextField { (UITextField) in
             UITextField.placeholder = "Name"
         }
-        let addItem = UIAlertAction(title: "Add Item", style: .default) { (UIAlertAction) in
+        
+        let addItem = UIAlertAction(title: "Add Item", style: .default) { (AlertAction) in
+            
             let textItem = alert.textFields![0]
-            self.array1!.append(textItem.text!)
+            
+//            for name in self.array1! {
+//                if name != textItem.text {
+//                    self.array1!.append(textItem.text!)
+//                    print(name)
+//                }
+//                else if name == textItem.text
+            if (self.array1!.contains(textItem.text!))
+                {
+                    let alert1 = UIAlertController(title: "Name Taken", message: "Please choose a different name", preferredStyle: .alert)
+                    
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alert1.addAction(okAction)
+                    
+                    self.present(alert1, animated: true, completion: nil)
+                    
+            }
+            else
+            {
+                 self.array1!.append(textItem.text!)
+            
+            }
+           
+            //self.array1!.append(textItem.text!)
             self.table_view.reloadData()
             
         }
@@ -52,8 +82,9 @@ class NoteTableViewController: UITableViewController {
         alert.addAction(cancel)
         alert.addAction(addItem)
         self.present(alert, animated: true, completion: nil)
+        
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "reuse"){
